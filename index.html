@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TO-Do List</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            color: #fff;
+        }
+
+        body {
+            background-color: black;
+            display: flex;
+            justify-content: center;
+
+        }
+
+        h1 {
+            color: white;
+            font-weight: 900;
+            text-align: center;
+            margin-top: 15rem;
+            margin-left: 5rem;
+            display: flex;
+            justify-content: center;
+        }
+
+        form {
+            margin-top: 20rem;
+            margin-left: -10rem;
+
+        }
+
+        button {
+            height: 5rem;
+            cursor: pointer;
+            border-radius: 20px;
+            width: 5rem;
+            background-color: yellow;
+            font-weight: 900;
+            font-family: 'Times New Roman', Times, serif;
+        }
+
+        input {
+            padding: 6px 2px;
+            min-width: 32rem;
+            font-size: 18px;
+            border-radius: 0.6rem;
+            border: none;
+            margin-right: 1.2rem;
+        }
+
+        .main_todo_div {
+            width: 36rem;
+            display: grid;
+            grid-template-columns: 1fr 0.3fr;
+            align-items: center;
+            height: auto;
+
+        }
+    </style>
+</head>
+
+<body>
+    <h1>To do list</h1>
+    <br />
+    <form>
+        <div>
+            <input type="text" id="inputValue" />
+            <button class="btn">Add to do</button>
+        </div>
+        <section class="todo-list-elem">
+
+        </section>
+    </form>
+ <script>
+        const mainTodoElem = document.querySelector(".todo-list-elem");
+        const inputValue = document.getElementById("inputValue");
+
+        let localTodoLIsts = [];
+
+        const addTodoList = (e) => {
+            e.preventDefault();
+
+
+
+
+            const todoListValue = inputValue.value.trim();
+
+            localTodoLIsts.push(todoListValue);
+            console.log(localTodoLIsts);
+
+
+
+
+            const divElement = document.createElement("div");
+            divElement.classList.add("main_todo_div");
+            divElement.innerHTML = ` <li>${inputValue.value}</li> <button 
+            class="deleteBtn">Delete</button>`;
+
+            mainTodoElem.append(divElement);
+        }
+
+        document.querySelector(".btn").addEventListener("click", (e) => {
+            addTodoList(e);
+        });
+
+    </script>
+
+</body>
+
+</html>
